@@ -1,0 +1,48 @@
+package com.example.logomania.Repository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+
+@Component
+public class DataRepository {
+
+
+    @Autowired
+    private DataSource dataSource;
+
+    public List<String> getAllWordsforOneSound(char sound){
+
+
+        List<String> allWords = new ArrayList<>();
+        try (Connection conn = dataSource.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT Word FROM dbo.Words")) {
+            while (rs.next()) {
+                allWords.add(rs.getString(""));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        for (String allWord : allWords) {
+            System.out.println(allWord);
+
+        }
+        return allWords;
+
+    }
+
+
+
+
+
+}

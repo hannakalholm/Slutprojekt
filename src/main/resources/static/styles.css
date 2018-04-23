@@ -1,0 +1,9 @@
+
+.draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+#playsound {
+    width: 20px;
+    height: 20px;
+}
+#lok { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+#rödvagn { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+#grönvagn { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
