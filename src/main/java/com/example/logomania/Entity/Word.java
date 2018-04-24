@@ -6,12 +6,12 @@ public class Word {
     private String image;
     private String audio;
     private String phoneme;
-    private int position;
+    private String position;
 
     public Word(){
     }
 
-    public Word(int id, String name, String image, String audio, String phoneme, int position) {
+    public Word(int id, String name, String image, String audio, String phoneme, String position) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -40,7 +40,7 @@ public class Word {
         return phoneme;
     }
 
-    public int getPosition() {
+    public String getPosition() {
         return position;
     }
 }

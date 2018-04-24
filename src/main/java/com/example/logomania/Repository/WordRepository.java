@@ -36,7 +36,7 @@ public class WordRepository implements DataRepository {
                         , rs.getString("Image")
                         , rs.getString("Audio")
                         , rs.getString("Phoneme")
-                        , rs.getInt("Position")));
+                        , rs.getString("Position")));
             }
         } catch (Exception e) {
             e.printStackTrace();
