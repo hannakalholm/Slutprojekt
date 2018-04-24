@@ -1,6 +1,5 @@
 package com.example.logomania.Controller;
 
-import com.example.logomania.Repository.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,8 +10,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class DbTestController {
@@ -31,6 +28,8 @@ public class DbTestController {
             return "Database connectivity seems " + (two == 2 ? "OK." : "weird!");
         }
     }
+
+
 
 
 }
