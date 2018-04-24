@@ -39,10 +39,10 @@ $( function() {
 
 
 var ananas = new Audio();
-ananas.src = "Ananas.wav";
+ananas.src = "/Audio/Ananas.wav";
 
 var pussel = new Audio();
-pussel.src = "Pussel.wav";
+pussel.src = "/Audio/Pussel.wav";
 
 var säl = new Audio();
 säl.src = "Säl.wav";

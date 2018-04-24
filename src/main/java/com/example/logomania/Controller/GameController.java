@@ -1,5 +1,6 @@
 package com.example.logomania.Controller;
 
+import com.example.logomania.Entity.Word;
 import com.example.logomania.Repository.DataRepository;
 import com.example.logomania.Repository.WordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,37 @@ public class GameController {
 
     @GetMapping("/test")
     @ResponseBody
-    public List<String> getAllWords(){
-        List<String> hejtest = dataRepository.getAllWordsforOneSound('S');
-        for (String allWord : hejtest) {
+    public List<Word> getRandomFiveWords(){
+        List<Word> allWordsForOnePhoneme = dataRepository.getAllWordsForOnePhoneme("S");
+        List<Word> fiveRandomWords = dataRepository.generateRandomFiveWords(allWordsForOnePhoneme);
+        for (Word allWord : fiveRandomWords ) {
             System.out.println(allWord);
 
         }
-        return hejtest;
+        return fiveRandomWords;
     }
+
+    //    @GetMapping("/test")
+//    @ResponseBody
+//    public List<Word> getAllWordsForOnePhoneme(){
+//        List<Word> allWordsInJsonFormat = dataRepository.getAllWordsForOnePhoneme("S");
+//        for (Word allWord : allWordsInJsonFormat) {
+//            System.out.println(allWord);
+//
+//        }
+//        return allWordsInJsonFormat;
+//    }
+
+//    @GetMapping("/test")
+//    @ResponseBody
+//    public List<String> getAllWordsForOnePhoneme(){
+//        List<String> allWordsInJsonFormat = dataRepository.getAllWordsForOnePhoneme('S');
+//        for (String allWord : allWordsInJsonFormat) {
+//            System.out.println(allWord);
+//
+//        }
+//        return allWordsInJsonFormat;
+//    }
+
 
 }
