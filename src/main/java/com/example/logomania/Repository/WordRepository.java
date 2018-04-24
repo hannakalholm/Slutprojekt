@@ -15,10 +15,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-
 @Component
 public class WordRepository implements DataRepository {
-
 
     @Autowired
     private DataSource dataSource;
@@ -39,7 +37,6 @@ public class WordRepository implements DataRepository {
                         , rs.getString("Audio")
                         , rs.getString("Phoneme")
                         , rs.getInt("Position")));
-
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,5 +53,3 @@ public class WordRepository implements DataRepository {
         return randomFiveWords;
     }
 }
-
-

@@ -39,16 +39,4 @@ public class GameController {
 //        return allWordsInJsonFormat;
 //    }
 
-//    @GetMapping("/test")
-//    @ResponseBody
-//    public List<String> getAllWordsForOnePhoneme(){
-//        List<String> allWordsInJsonFormat = dataRepository.getAllWordsForOnePhoneme('S');
-//        for (String allWord : allWordsInJsonFormat) {
-//            System.out.println(allWord);
-//
-//        }
-//        return allWordsInJsonFormat;
-//    }
-
-
 }
