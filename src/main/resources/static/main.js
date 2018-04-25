@@ -56,16 +56,14 @@ function getImageAudioAndPosition() {
         success: function (data) {
             console.log(data);
             console.log("successfully fetched " + data[0].image);
-
-            $( "img.test" ).attr( "src", "Images/" + data[0].image);
-
-            ljud.src = "/Audio/" + data[0].audio;
-            $( "img.audioimage" ).attr( "onclick", "ljud.play()");
-            for(var x=0; x<data.length; x++){
-                console.log(content = data[x].name);
+            var counter = data.length-1;
+            while (counter>=0) {
+                $("img.test").attr("src", "Images/" + data[counter].image);
+                ljud.src = "/Audio/" + data[counter].audio;
+                $("img.audioimage").attr("onclick", "ljud.play()");
+                $("img.test").addClass(data[counter].position);
+                counter--;
             }
-
-            $("img.test").addClass(data[0].position);
         }
     });
 }
