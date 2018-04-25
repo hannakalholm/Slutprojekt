@@ -47,6 +47,7 @@ $(function () {
 var ljud = new Audio();
 var listOfFiveRandomWords = [];
 
+
 function sendChoosenPhonemeToServer() {
 
     $(".button").on("click"), function (e) {
@@ -69,6 +70,21 @@ function sendChoosenPhonemeToServer() {
     }
 }
 
+/*function sendPhoneme() {
+
+    $.ajax({
+        type: "POST"
+        error: function () {
+            console.log("error sending the data");
+        }
+        url: "/test",
+        data: $('').serialize()
+    }).done(function (data) {
+
+    });
+}*/
+
+
 function fetchObjects() {
 
     $.ajax({
@@ -76,7 +92,7 @@ function fetchObjects() {
         error: function () {
             console.log("error retrieving the data");
         },
-        url: "/test", //which is mapped to its partner function on our controller class
+        url: "/test?phoneme=G", //which is mapped to its partner function on our controller class
         success: function (data) {
             //       console.log(data);
             //     console.log("successfully fetched " + data[0].image);

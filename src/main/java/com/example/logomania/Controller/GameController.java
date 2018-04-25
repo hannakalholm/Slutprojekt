@@ -6,6 +6,8 @@ import com.example.logomania.Repository.WordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -18,8 +20,9 @@ public class GameController {
 
     @GetMapping("/test")
     @ResponseBody
-    public List<Word> getRandomFiveWords(){
-        List<Word> allWordsForOnePhoneme = dataRepository.getAllWordsForOnePhoneme("G");
+    public List<Word> getRandomFiveWords(@RequestParam String phoneme){
+
+        List<Word> allWordsForOnePhoneme = dataRepository.getAllWordsForOnePhoneme(phoneme);
         List<Word> fiveRandomWords = dataRepository.generateRandomFiveWords(allWordsForOnePhoneme);
         for (Word allWord : fiveRandomWords ) {
             System.out.println(allWord);
@@ -28,6 +31,12 @@ public class GameController {
         return fiveRandomWords;
     }
 
+  /*  @PostMapping("/test")
+    public String getInfoFromButton(@RequestParam String name) {
+        String phoneme;
+        return "redirect:/test";
+    }
+*/
     //    @GetMapping("/test")
 //    @ResponseBody
 //    public List<Word> getAllWordsForOnePhoneme(){
