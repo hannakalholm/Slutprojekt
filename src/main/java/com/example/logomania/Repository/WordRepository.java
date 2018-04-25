@@ -24,6 +24,7 @@ public class WordRepository implements DataRepository {
     //One game contains of five randomly choosen words.
     private final int GAME_SET = 5;
 
+
     public List<Word> getAllWordsForOnePhoneme(String phoneme) {
 
         List<Word> allWordsForOnePhoneme = new ArrayList<>();
