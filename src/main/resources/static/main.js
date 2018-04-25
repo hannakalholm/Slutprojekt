@@ -7,6 +7,7 @@ $( document ).ready(function() {
 $( function() {
     $( ".draggable" ).draggable({
         revert: true,
+
     });
 } );
 
@@ -15,7 +16,8 @@ $( function() {
         accept: ".Initial",
         drop: function( event, ui ) {
             $( this )
-            alert("Dropped initial!")
+            $( "img.test" ).attr( "id", "hidden");
+
 
         }
     });
@@ -26,7 +28,8 @@ $( function() {
         accept: ".Medial",
         drop: function( event, ui ) {
             $( this )
-            alert("Dropped medial!")
+            $( "img.test" ).attr( "id", "hidden");
+
 
         }
     });
@@ -37,7 +40,8 @@ $( function() {
         accept: ".Final",
         drop: function( event, ui ) {
             $( this )
-            alert("Dropped final!")
+            $( "img.test" ).attr( "id", "hidden");
+
 
         }
     });
