@@ -69,7 +69,7 @@ function fetchObjects() {
         error: function () {
             console.log("error retrieving the data");
         },
-        url: "/test?phoneme=G", //which is mapped to its partner function on our controller class
+        url: "/test?phoneme=F", //which is mapped to its partner function on our controller class
         success: function (data) {
             //       console.log(data);
             //     console.log("successfully fetched " + data[0].image);
