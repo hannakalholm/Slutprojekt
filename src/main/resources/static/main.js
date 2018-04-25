@@ -47,6 +47,29 @@ $(function () {
 var ljud = new Audio();
 var listOfFiveRandomWords = [];
 
+
+function sendChoosenPhonemeToServer() {
+
+    $(".button").on("click"), function (e) {
+        var phoneme = $(this).prev().val();
+
+        $.ajax({
+            type: "POST",
+            error: function () {
+                console.log("error sending the data");
+                render([]);
+            },
+            data: {
+                phoneme: phoneme
+            },
+            url: "/test",
+            success: function (phoneme){
+            }
+        });
+        fetchObjects();
+    }
+}
+
 /*function sendPhoneme() {
 
     $.ajax({
