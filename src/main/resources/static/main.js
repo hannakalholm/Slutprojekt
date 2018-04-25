@@ -25,7 +25,7 @@ $(function () {
 $(function () {
     $("#rödvagn").droppable({
         accept: ".Medial",
-        drop: function (event, ui) {
+        drop: function (event, draggable) {
             $(this)
             $("img.test").addClass("hidden");
             update(listOfFiveRandomWords);
@@ -69,26 +69,22 @@ function fetchObjects() {
             }
             //       console.log(listOfFiveRandomWords);
             render(listOfFiveRandomWords);
-
-            // $("img.test").attr("src", "Images/" + data[0].image);
-            // ljud.src = "/Audio/" + data[0].audio;
-            // $("img.audioimage").attr("onclick", "ljud.play()");
-            // $("img.test").addClass(data[0].position);
         }
     });
 }
-
 
 function render(listOfFiveRandomWords) {
     $("img.test").removeClass("hidden");
     var index = listOfFiveRandomWords.index;
 
     $("img.test").attr("src", "Images/" + listOfFiveRandomWords[index].image);
-    $("img.test").addClass("visible");
 
+    //$("img.test").addClass("visible");
 
     ljud.src = "/Audio/" + listOfFiveRandomWords[index].audio;
+
     $("img.audioimage").attr("onclick", "ljud.play()");
+    $("img.audioimage").click();
 
     if (listOfFiveRandomWords.index === 0) {
         $("img.test").addClass(listOfFiveRandomWords[index].position);
@@ -111,11 +107,6 @@ function update(listOfFiveRandomWords) {
         alert("Game is over, play aglain.");
 
     }
-
 }
 
 fetchObjects();
-
-
-
-

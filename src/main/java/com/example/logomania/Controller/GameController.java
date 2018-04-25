@@ -19,7 +19,7 @@ public class GameController {
     @GetMapping("/test")
     @ResponseBody
     public List<Word> getRandomFiveWords(){
-        List<Word> allWordsForOnePhoneme = dataRepository.getAllWordsForOnePhoneme("S");
+        List<Word> allWordsForOnePhoneme = dataRepository.getAllWordsForOnePhoneme("G");
         List<Word> fiveRandomWords = dataRepository.generateRandomFiveWords(allWordsForOnePhoneme);
         for (Word allWord : fiveRandomWords ) {
             System.out.println(allWord);
