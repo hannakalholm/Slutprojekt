@@ -1,4 +1,9 @@
+body {
+    background: url("Images/Background.jpg") no-repeat center center fixed;
+    background-size: contain;
 
+
+}
 .draggable {
     width: 100px;
     height: 100px;
@@ -16,12 +21,13 @@
 }
 
 .train {
-    width: 150px;
-    height: 150px;
+    width: 300px;
+    height: 300px;
     padding: 0.5em;
     float: left;
     margin: 10px;
 }
+
 
 #playsound {
     width: 20px;

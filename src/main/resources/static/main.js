@@ -3,98 +3,24 @@ $( document ).ready(function() {
    console.log( "ready!" );
 });
 */
-$(function () {
-    $(".draggable").draggable({
-        revert: true,
 
-    });
-});
-
-$(function () {
-    $("#lok").droppable({
-        accept: ".Initial",
-        drop: function (event, ui) {
-            $(this)
-            $("img.test").addClass("hidden");
-            update(listOfFiveRandomWords);
-
-        }
-    });
-});
-
-$(function () {
-    $("#rödvagn").droppable({
-        accept: ".Medial",
-        drop: function (event, draggable) {
-            $(this)
-            $("img.test").addClass("hidden");
-            update(listOfFiveRandomWords);
-        }
-    });
-});
-
-$(function () {
-    $("#grönvagn").droppable({
-        accept: ".Final",
-        drop: function (event, ui) {
-            $(this)
-            $("img.test").addClass("hidden");
-            update(listOfFiveRandomWords);
-        }
-    });
-});
-
-var ljud = new Audio();
-var listOfFiveRandomWords = [];
-
-
-function sendChoosenPhonemeToServer() {
-
-    $(".button").on("click"), function (e) {
-        var phoneme = $(this).prev().val();
-
-        $.ajax({
-            type: "POST",
-            error: function () {
-                console.log("error sending the data");
-                render([]);
-            },
-            data: {
-                phoneme: phoneme
-            },
-            url: "/test",
-            success: function (phoneme){
-            }
-        });
-        fetchObjects();
-    }
-}
-
-/*function sendPhoneme() {
+$(".button").on("click", function (e) {
+    var phoneme = $(".button").attr('id');
+    console.log(phoneme);
+    console.log("Button clicked");
 
     $.ajax({
-        type: "POST"
-        error: function () {
-            console.log("error sending the data");
-        }
-        url: "/test",
-        data: $('').serialize()
-    }).done(function (data) {
-
-    });
-}*/
-
-
-function fetchObjects() {
-
-    $.ajax({
-        type: "GET",
+        type: "POST",
         error: function () {
             console.log("error retrieving the data");
         },
-        url: "/test?phoneme=F", //which is mapped to its partner function on our controller class
+        data: {
+            phoneme: phoneme
+        },
+
+        url: "/test", //which is mapped to its partner function on our controller class
         success: function (data) {
-            //       console.log(data);
+            console.log(data);
             //     console.log("successfully fetched " + data[0].image);
 
             if (listOfFiveRandomWords.length != 0) {
@@ -109,15 +35,57 @@ function fetchObjects() {
             render(listOfFiveRandomWords);
         }
     });
-}
+});
+
+$(function () {
+    $(".draggable").draggable({
+        revert: true,
+
+    });
+});
+
+$(function () {
+    $("#locomotive").droppable({
+        accept: ".Initial",
+        drop: function (event, ui) {
+            $(this)
+            $("img.test").addClass("hidden");
+            update(listOfFiveRandomWords);
+
+        }
+    });
+});
+
+$(function () {
+    $("#middlewagon").droppable({
+        accept: ".Medial",
+        drop: function (event, draggable) {
+            $(this)
+            $("img.test").addClass("hidden");
+            update(listOfFiveRandomWords);
+        }
+    });
+});
+
+$(function () {
+    $("#finalwagon").droppable({
+        accept: ".Final",
+        drop: function (event, ui) {
+            $(this)
+            $("img.test").addClass("hidden");
+            update(listOfFiveRandomWords);
+        }
+    });
+});
+
+var ljud = new Audio();
+var listOfFiveRandomWords = [];
 
 function render(listOfFiveRandomWords) {
     $("img.test").removeClass("hidden");
     var index = listOfFiveRandomWords.index;
 
     $("img.test").attr("src", "Images/" + listOfFiveRandomWords[index].image);
-
-    //$("img.test").addClass("visible");
 
     ljud.src = "/Audio/" + listOfFiveRandomWords[index].audio;
 
@@ -146,5 +114,3 @@ function update(listOfFiveRandomWords) {
 
     }
 }
-
-fetchObjects();

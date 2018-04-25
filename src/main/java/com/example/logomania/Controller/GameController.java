@@ -18,7 +18,7 @@ public class GameController {
     @Autowired
     DataRepository dataRepository;
 
-    @GetMapping("/test")
+    @PostMapping("/test")
     @ResponseBody
     public List<Word> getRandomFiveWords(@RequestParam String phoneme){
 
@@ -30,22 +30,5 @@ public class GameController {
         }
         return fiveRandomWords;
     }
-
-  /*  @PostMapping("/test")
-    public String getInfoFromButton(@RequestParam String name) {
-        String phoneme;
-        return "redirect:/test";
-    }
-*/
-    //    @GetMapping("/test")
-//    @ResponseBody
-//    public List<Word> getAllWordsForOnePhoneme(){
-//        List<Word> allWordsInJsonFormat = dataRepository.getAllWordsForOnePhoneme("S");
-//        for (Word allWord : allWordsInJsonFormat) {
-//            System.out.println(allWord);
-//
-//        }
-//        return allWordsInJsonFormat;
-//    }
 
 }
