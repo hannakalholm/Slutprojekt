@@ -16,29 +16,34 @@
 
 <a href="/dbtest"> Check database connectivity</a>
 
-<h1>Hjälp Titti lasta tåget!</h1>
 
 
-<div>
-<img class="currentimage draggable hidden" src=""><br>
-<img class="audioimage" id="playsound" src="Images/Speaker.png" onclick="pussel.play()">
+
+
+<div class="gameside">
+    <div><img class="currentimage draggable hidden" src=""></div>
 </div>
 
-<input type="image" src="Images/R.png" class="buttonpic button" id="R"></input>
-<input type="image" src="Images/L.png" class="buttonpic button" id="L"></input>
-<input type="image" src="Images/F.png" class="buttonpic button" id="F"></input>
-<input type="image" src="Images/S.png" class="buttonpic button" id="S"></input>
-<input type="image" src="Images/K.png" class="buttonpic button" id="K"></input>
-<input type="image" src="Images/G.png" class="buttonpic button" id="G"></input>
+<div class="frontsideupper">
+    <div><input type="image" src="Images/R.png" class="buttonpic button" id="R"></input></div>
+    <div><input type="image" src="Images/L.png" class="buttonpic button" id="L"></input></div>
+    <div><input type="image" src="Images/F.png" class="buttonpic button" id="F"></input></div>
+</div>
+<div class="frontsidelower">
+    <div><input type="image" src="Images/S.png" class="buttonpic button" id="S"></input></div>
+    <div><input type="image" src="Images/K.png" class="buttonpic button" id="K"></input></div>
+    <div><input type="image" src="Images/G.png" class="buttonpic button" id="G"></input></div>
+</div>
+
+<div class="smallfrontside">
+    <div><img class="speaker" id="playsound" src="Images/Speaker.png" onclick="pussel.play()"></div>
+</div>
 
 <div class="train">
-<div><img id="locomotive" class="Initial" src="Images/Titti.png"></div>
-<div><img id="middlewagon" class="Medial" src="Images/Mittenvagn.png"></div>
-<div><img id="finalwagon" class="Final" src="Images/Slutvagn.png"></div>
+    <div><img id="locomotive" class="Initial" src="Images/Titti.png"></div>
+    <div><img id="middlewagon" class="Medial" src="Images/Mittenvagn.png"></div>
+    <div><img id="finalwagon" class="Final" src="Images/Mittenvagn.png"></div>
 </div>
-
-
-
 
 
 <script src="main.js"></script>

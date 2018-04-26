@@ -81,15 +81,21 @@ $(function () {
 });
 
 function render(listOfFiveRandomWords) {
-    $("img.currentimage").removeClass("hidden");
+    $(document).ready(function(){
+        setTimeout(function () {
+            $("img.currentimage").removeClass("hidden");}, 500);
+        });
     var index = listOfFiveRandomWords.index;
 
     $("img.currentimage").attr("src", "Images/" + listOfFiveRandomWords[index].image);
 
     ljud.src = "/Audio/" + listOfFiveRandomWords[index].audio;
 
-    $("img.audioimage").attr("onclick", "ljud.play()");
-    $("img.audioimage").click();
+    $("img.speaker").attr("onclick", "ljud.play()");
+    setTimeout(function () {
+        $("img.speaker").click();}, 500);
+
+
 
     if (listOfFiveRandomWords.index === 0) {
         $("img.currentimage").addClass(listOfFiveRandomWords[index].position);
