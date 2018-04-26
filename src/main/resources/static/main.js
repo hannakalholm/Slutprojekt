@@ -3,8 +3,8 @@ $( document ).ready(function() {
    console.log( "ready!" );
 });
 */
-var ljud = new Audio();
-var ljud2 = new Audio();
+var wordaudio = new Audio();
+var phonemeaudio = new Audio();
 var listOfFiveRandomWords = [];
 
 $(".button").on("click", function (e) {
@@ -15,6 +15,7 @@ $(".button").on("click", function (e) {
     $("img.speaker").removeClass("hidden");
     $("img.currentphoneme").removeClass("hidden");
     $("input.buttonpic").addClass("hidden");
+    $("h1").remove();
 
 
     $.ajax({
@@ -93,14 +94,14 @@ function render(listOfFiveRandomWords) {
     $("img.currentimage").attr("src", "Images/" + listOfFiveRandomWords[index].image);
     $("img.currentphoneme").attr("src", "Images/" + listOfFiveRandomWords[index].phoneme + ".png");
 
-    ljud.src = "/Audio/" + listOfFiveRandomWords[index].audio;
-    ljud2.src = "Audio/" + listOfFiveRandomWords[index].phoneme + ".wav";
+    wordaudio.src = "/Audio/" + listOfFiveRandomWords[index].audio;
+    phonemeaudio.src = "Audio/" + listOfFiveRandomWords[index].phoneme + ".wav";
 
-    $("img#playsound").attr("onclick", "ljud.play()");
+    $("img#playsound").attr("onclick", "wordaudio.play()");
     setTimeout(function () {
         $("img#playsound").click();}, 500);
 
-    $("img#playphoneme").attr("onclick", "ljud2.play()");
+    $("img#playphoneme").attr("onclick", "phonemeaudio.play()");
 
     if (listOfFiveRandomWords.index === 0) {
         $("img.currentimage").addClass(listOfFiveRandomWords[index].position);
@@ -120,14 +121,16 @@ function update(listOfFiveRandomWords) {
     } else {
         alert("Game is over, play aglain.");
         $("input.buttonpic").removeClass("hidden");
+        $("img.speaker").addClass("hidden");
+        $("img.currentphoneme").addClass("hidden");
     }
 }
 /* Open the sidenav */
-/*function openNav() {
+function openNav() {
     document.getElementById("mySidenav").style.width = "100%";
 }
 
-/!* Close/hide the sidenav *!/
+//Close/hide the sidenav
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
-}*/
+}
