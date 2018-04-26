@@ -19,27 +19,16 @@ div {
     justify-content: center;
 }
 
-h1 {
-    font-family: 'Amatic SC', cursive;
-    font-size: 115px;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 30%;
-    right: 0;
-    color: rgb(58, 81, 96);
-}
-#header {
-    position: fixed;
-    width: 100%;
-    height: fit-content;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(255, 255, 255, 0.1);
-    z-index: 2;
-}
+/*h1 {*/
+    /*font-family: 'Amatic SC', cursive;*/
+    /*font-size: 115px;*/
+    /*position: absolute;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*left: 30%;*/
+    /*right: 0;*/
+    /*color: rgb(58, 81, 96);*/
+/*}*/
 
 img.currentimage {
     width: 200px;
@@ -145,10 +134,6 @@ img.currentphoneme {
     justify-content: center;
 
 }
-#playphoneme {
-    padding-top: 20px;
-    padding-left: 55px;
-}
 
 .sidenav {
     height: 100%;
@@ -171,3 +156,28 @@ img.currentphoneme {
     margin-left: 50px;
 }
 
+#header {
+    display: flex;
+    align-content: space-between;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.15);
+    z-index: 2;
+    font-family: 'Amatic SC', cursive;
+    font-size: 115px;
+    position: absolute;
+    margin-right: auto;
+    margin-top: 75px;
+    right: 0;
+    text-decoration-color: rgb(58, 81, 96);
+}
+
+#playphoneme {
+    padding-top: 20px;
+    padding-left: 55px;
+}

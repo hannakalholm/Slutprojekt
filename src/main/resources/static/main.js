@@ -15,7 +15,7 @@ $(".button").on("click", function (e) {
     $("img.speaker").removeClass("hidden");
     $("img.currentphoneme").removeClass("hidden");
     $("input.buttonpic").addClass("hidden");
-    $("h1").remove();
+    $("#header").remove();
 
 
     $.ajax({
