@@ -3,11 +3,16 @@ $( document ).ready(function() {
    console.log( "ready!" );
 });
 */
+var ljud = new Audio();
+var listOfFiveRandomWords = [];
 
 $(".button").on("click", function (e) {
-    var phoneme = $(".button").attr('id');
+    var phoneme = $(this).attr('id');
     console.log(phoneme);
     console.log("Button clicked");
+    $("img.currentimage").removeClass("hidden");
+    $("input.buttonpic").addClass("hidden");
+
 
     $.ajax({
         type: "POST",
@@ -21,7 +26,6 @@ $(".button").on("click", function (e) {
         url: "/test", //which is mapped to its partner function on our controller class
         success: function (data) {
             console.log(data);
-            //     console.log("successfully fetched " + data[0].image);
 
             if (listOfFiveRandomWords.length != 0) {
                 listOfFiveRandomWords = [];
@@ -31,7 +35,6 @@ $(".button").on("click", function (e) {
                 listOfFiveRandomWords.push(data[x]);
                 listOfFiveRandomWords.index = 0;
             }
-            //       console.log(listOfFiveRandomWords);
             render(listOfFiveRandomWords);
         }
     });
@@ -49,9 +52,8 @@ $(function () {
         accept: ".Initial",
         drop: function (event, ui) {
             $(this)
-            $("img.test").addClass("hidden");
+            $("img.currentimage").addClass("hidden");
             update(listOfFiveRandomWords);
-
         }
     });
 });
@@ -61,7 +63,7 @@ $(function () {
         accept: ".Medial",
         drop: function (event, draggable) {
             $(this)
-            $("img.test").addClass("hidden");
+            $("img.currentimage").addClass("hidden");
             update(listOfFiveRandomWords);
         }
     });
@@ -72,20 +74,17 @@ $(function () {
         accept: ".Final",
         drop: function (event, ui) {
             $(this)
-            $("img.test").addClass("hidden");
+            $("img.currentimage").addClass("hidden");
             update(listOfFiveRandomWords);
         }
     });
 });
 
-var ljud = new Audio();
-var listOfFiveRandomWords = [];
-
 function render(listOfFiveRandomWords) {
-    $("img.test").removeClass("hidden");
+    $("img.currentimage").removeClass("hidden");
     var index = listOfFiveRandomWords.index;
 
-    $("img.test").attr("src", "Images/" + listOfFiveRandomWords[index].image);
+    $("img.currentimage").attr("src", "Images/" + listOfFiveRandomWords[index].image);
 
     ljud.src = "/Audio/" + listOfFiveRandomWords[index].audio;
 
@@ -93,14 +92,12 @@ function render(listOfFiveRandomWords) {
     $("img.audioimage").click();
 
     if (listOfFiveRandomWords.index === 0) {
-        $("img.test").addClass(listOfFiveRandomWords[index].position);
+        $("img.currentimage").addClass(listOfFiveRandomWords[index].position);
     } else {
-        $("img.test").removeClass(listOfFiveRandomWords[index - 1].position);
-        $("img.test").addClass(listOfFiveRandomWords[index].position);
+        $("img.currentimage").removeClass(listOfFiveRandomWords[index - 1].position);
+        $("img.currentimage").addClass(listOfFiveRandomWords[index].position);
     }
-
     console.log(listOfFiveRandomWords);
-
 }
 
 function update(listOfFiveRandomWords) {
@@ -111,6 +108,6 @@ function update(listOfFiveRandomWords) {
 
     } else {
         alert("Game is over, play aglain.");
-
+        $("input.buttonpic").removeClass("hidden");
     }
 }
