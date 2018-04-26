@@ -13,15 +13,26 @@
 
 </head>
 <body>
+<!--<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+</div>
 
-<a href="/dbtest"> Check database connectivity</a>
-
-
-
+&lt;!&ndash; Use any element to open the sidenav &ndash;&gt;
+<span onclick="openNav()">Information</span>-->
 
 
 <div class="gameside">
     <div><img class="currentimage draggable hidden" src=""></div>
+    <div><img class="speaker hidden" id="playsound" src="Images/Speaker.png"></div>
+</div>
+
+<div class="currentphoneme">
+    <img class="currentphoneme hidden" src="">
+    <img class="speaker hidden" id="playphoneme" src="Images/Speaker.png">
 </div>
 
 <div class="frontsideupper">
@@ -35,9 +46,6 @@
     <div><input type="image" src="Images/G.png" class="buttonpic button" id="G"></input></div>
 </div>
 
-<div class="smallfrontside">
-    <div><img class="speaker" id="playsound" src="Images/Speaker.png" onclick="pussel.play()"></div>
-</div>
 
 <div class="train">
     <div><img id="locomotive" class="Initial" src="Images/Titti.png"></div>

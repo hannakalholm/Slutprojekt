@@ -4,6 +4,7 @@ $( document ).ready(function() {
 });
 */
 var ljud = new Audio();
+var ljud2 = new Audio();
 var listOfFiveRandomWords = [];
 
 $(".button").on("click", function (e) {
@@ -11,6 +12,8 @@ $(".button").on("click", function (e) {
     console.log(phoneme);
     console.log("Button clicked");
     $("img.currentimage").removeClass("hidden");
+    $("img.speaker").removeClass("hidden");
+    $("img.currentphoneme").removeClass("hidden");
     $("input.buttonpic").addClass("hidden");
 
 
@@ -88,14 +91,16 @@ function render(listOfFiveRandomWords) {
     var index = listOfFiveRandomWords.index;
 
     $("img.currentimage").attr("src", "Images/" + listOfFiveRandomWords[index].image);
+    $("img.currentphoneme").attr("src", "Images/" + listOfFiveRandomWords[index].phoneme + ".png");
 
     ljud.src = "/Audio/" + listOfFiveRandomWords[index].audio;
+    ljud2.src = "Audio/" + listOfFiveRandomWords[index].phoneme + ".wav";
 
-    $("img.speaker").attr("onclick", "ljud.play()");
+    $("img#playsound").attr("onclick", "ljud.play()");
     setTimeout(function () {
-        $("img.speaker").click();}, 500);
+        $("img#playsound").click();}, 500);
 
-
+    $("img#playphoneme").attr("onclick", "ljud2.play()");
 
     if (listOfFiveRandomWords.index === 0) {
         $("img.currentimage").addClass(listOfFiveRandomWords[index].position);
@@ -117,3 +122,12 @@ function update(listOfFiveRandomWords) {
         $("input.buttonpic").removeClass("hidden");
     }
 }
+/* Open the sidenav */
+/*function openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
+}
+
+/!* Close/hide the sidenav *!/
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}*/
