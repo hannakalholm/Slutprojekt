@@ -24,8 +24,6 @@ $(".button").on("click", function (e) {
     soundtrack.pause();
     //put fade-out on soundtrack
 
-
-
     $.ajax({
         type: "POST",
         error: function () {
@@ -138,7 +136,7 @@ function update(listOfFiveRandomWords) {
         //put fade-in on soundtrack
     }
 }
-/* Open the sidenav */
+//Open the sidenav
 function openNav() {
     document.getElementById("mySidenav").style.width = "100%";
     setTimeout(function () {
