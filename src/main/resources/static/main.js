@@ -5,7 +5,11 @@ $( document ).ready(function() {
 */
 var wordaudio = new Audio();
 var phonemeaudio = new Audio();
+var soundtrack = new Audio();
 var listOfFiveRandomWords = [];
+soundtrack.src = "Audio/Soundtrack.wav";
+soundtrack.play();
+soundtrack.loop = true;
 
 $(".button").on("click", function (e) {
     var phoneme = $(this).attr('id');
@@ -15,7 +19,11 @@ $(".button").on("click", function (e) {
     $("img.speaker").removeClass("hidden");
     $("img.currentphoneme").removeClass("hidden");
     $("input.buttonpic").addClass("hidden");
-    $("#header").remove();
+    $("#header").removeClass("visible");
+    $("#header").addClass("hidden");
+    soundtrack.pause();
+    //put fade-out on soundtrack
+
 
 
     $.ajax({
@@ -123,14 +131,23 @@ function update(listOfFiveRandomWords) {
         $("input.buttonpic").removeClass("hidden");
         $("img.speaker").addClass("hidden");
         $("img.currentphoneme").addClass("hidden");
+        $("#header").removeClass("hidden");
+        $("#header").addClass("visible");
+        soundtrack.play();
+        soundtrack.loop = true;
+        //put fade-in on soundtrack
     }
 }
 /* Open the sidenav */
 function openNav() {
     document.getElementById("mySidenav").style.width = "100%";
+    setTimeout(function () {
+        $("#header").addClass("visible");}, 200);
+
 }
 
 //Close/hide the sidenav
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
+    $("#header").removeClass("visible");
 }

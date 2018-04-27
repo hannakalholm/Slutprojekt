@@ -144,11 +144,15 @@ img.currentphoneme {
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    padding-top: 60px;
+    padding-top: 300px;
     transition: 0.5s;
+    font-family: 'Amatic SC', cursive;
+    font-size: 35px;
+    color: ghostwhite;
 }
 
 .sidenav .closebtn {
+    color: ghostwhite;
     position: absolute;
     top: 0;
     right: 25px;
