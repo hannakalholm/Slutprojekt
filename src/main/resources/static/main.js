@@ -3,6 +3,7 @@ $( document ).ready(function() {
    console.log( "ready!" );
 });
 */
+
 var wordaudio = new Audio();
 var phonemeaudio = new Audio();
 var soundtrack = new Audio();
