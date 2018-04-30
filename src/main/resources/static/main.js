@@ -22,10 +22,15 @@ $(".button").on("click", function (e) {
     var phoneme = $(this).attr('id');
     console.log(phoneme);
     console.log("Button clicked");
-    $("img.currentimage").removeClass("hidden");
+ /*   $("img.currentimage").removeClass("hidden");
     $("img.speaker").removeClass("hidden");
-    $("img.currentphoneme").removeClass("hidden");
-    $("input.buttonpic").addClass("hidden");
+    $("img.currentphoneme").removeClass("hidden");*/
+    $(".gamesidephoneme").removeClass("nonedisplay");
+    $(".gameside").removeClass("nonedisplay");
+    $(".frontsideupper").addClass("nonedisplay");
+    $(".frontsidelower").addClass("nonedisplay");
+
+    $("input.buttonpic").addClass("nonedisplay");
     $("#header").removeClass("visible");
     $("#header").addClass("hidden");
     soundtrack.pause();
@@ -186,9 +191,13 @@ function update(listOfFiveRandomWords) {
 
     } else {
         alert("Game is over, play aglain.");
-        $("input.buttonpic").removeClass("hidden");
-        $("img.speaker").addClass("hidden");
-        $("img.currentphoneme").addClass("hidden");
+        $("input.buttonpic").removeClass("nonedisplay");
+        $(".frontsideupper").removeClass("nonedisplay");
+        $(".frontsidelower").removeClass("nonedisplay");
+        $(".gamesidephoneme").addClass("nonedisplay");
+        $(".gameside").addClass("nonedisplay");
+/*        $("img.speaker").addClass("hidden");
+        $("img.currentphoneme").addClass("hidden");*/
         $("#header").removeClass("hidden");
         $("#header").addClass("visible");
         soundtrack.play();
