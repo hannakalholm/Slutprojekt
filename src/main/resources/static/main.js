@@ -5,9 +5,15 @@ $( document ).ready(function() {
 */
 
 var wordaudio = new Audio();
+var phraseaudio = new Audio();
 var phonemeaudio = new Audio();
 var soundtrack = new Audio();
 var listOfFiveRandomWords = [];
+var listOfCorrectAnswer = [];
+var listOfIncorrectAnswer = [];
+var listOfGameFeedback = [];
+//var randomPhraseWhenCorrect = Math.floor((Math.random()*3)+1);
+var randomPhraseWhenIncorrect = Math.floor((Math.random()*(listOfIncorrectAnswer.length-1))+1);
 soundtrack.src = "Audio/Soundtrack.wav";
 soundtrack.play();
 soundtrack.loop = true;
@@ -51,10 +57,29 @@ $(".button").on("click", function (e) {
     });
 });
 
-$(function () {
+
+/*$(function () {
     $(".draggable").draggable({
         revert: true,
 
+    });
+});*/
+
+$(function () {
+    $(".draggable").draggable({
+        revert: function(droppable){
+            if (!droppable){
+                var randomPhraseWhenIncorrect = Math.floor((Math.random()*listOfIncorrectAnswer.length));
+                phraseaudio.src = "Audio/" + listOfIncorrectAnswer[randomPhraseWhenIncorrect].audio;
+                phraseaudio.play();
+            }
+            else {
+                var randomPhraseWhenCorrect = Math.floor((Math.random()*listOfCorrectAnswer.length));
+                phraseaudio.src = "Audio/" + listOfCorrectAnswer[randomPhraseWhenCorrect].audio;
+                phraseaudio.play();
+            }
+            return true;
+        }
     });
 });
 
@@ -72,7 +97,7 @@ $(function () {
 $(function () {
     $("#middlewagon").droppable({
         accept: ".Medial",
-        drop: function (event, draggable) {
+        drop: function (event, ui) {
             $(this)
             $("img.currentimage").addClass("hidden");
             update(listOfFiveRandomWords);
@@ -91,10 +116,44 @@ $(function () {
     });
 });
 
+//ajax-anrop för att få phrases när man svarat rätt
+$.ajax({
+    type: "GET",
+    error: function () {
+        console.log("error retrieving the data");
+    },
+
+    url: "/getcorrectphrases", //which is mapped to its partner function on our controller class
+    success: function (data) {
+        console.log(data);
+
+        for (var x = 0; x < data.length; x++) {
+            listOfCorrectAnswer.push(data[x]);
+        }
+    }
+});
+
+//ajax-anrop för att få phrases när man svarat fel
+$.ajax({
+    type: "GET",
+    error: function () {
+        console.log("error retrieving the data");
+    },
+
+    url: "/getincorrectphrases", //which is mapped to its partner function on our controller class
+    success: function (data) {
+        console.log(data);
+
+        for (var x = 0; x < data.length; x++) {
+            listOfIncorrectAnswer.push(data[x]);
+        }
+    }
+});
+
 function render(listOfFiveRandomWords) {
     $(document).ready(function(){
         setTimeout(function () {
-            $("img.currentimage").removeClass("hidden");}, 500);
+            $("img.currentimage").removeClass("hidden");}, 2000);
         });
     var index = listOfFiveRandomWords.index;
 
@@ -106,7 +165,7 @@ function render(listOfFiveRandomWords) {
 
     $("img#playsound").attr("onclick", "wordaudio.play()");
     setTimeout(function () {
-        $("img#playsound").click();}, 500);
+        $("img#playsound").click();}, 2000);
 
     $("img#playphoneme").attr("onclick", "phonemeaudio.play()");
 

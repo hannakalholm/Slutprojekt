@@ -1,5 +1,6 @@
 package com.example.logomania.Repository;
 
+import com.example.logomania.Entity.Phrase;
 import com.example.logomania.Entity.Word;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Random;
 
 @Component
-public class WordRepository implements DataRepository {
+public class WordPhraseRepository implements DataRepository {
 
     @Autowired
     private DataSource dataSource;
@@ -53,4 +54,39 @@ public class WordRepository implements DataRepository {
         }
         return randomFiveWords;
     }
+
+    public List<Phrase> generatePhrasesWhenCorrect(){
+        List<Phrase> allPhrasesWhenCorrect = new ArrayList<>();
+        try (Connection conn = dataSource.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM dbo.Phrases WHERE Situation = 'Correct';")) {
+            while (rs.next()) {
+                allPhrasesWhenCorrect.add(new Phrase(rs.getInt("ID")
+                        , rs.getString("Situation")
+                        , rs.getString("Audio")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return allPhrasesWhenCorrect;
+    }
+
+    public List<Phrase> generatePhrasesWhenIncorrect(){
+        List<Phrase> allPhrasesWhenIncorrect = new ArrayList<>();
+        try (Connection conn = dataSource.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM dbo.Phrases WHERE Situation = 'Incorrect';")) {
+            while (rs.next()) {
+                allPhrasesWhenIncorrect.add(new Phrase(rs.getInt("ID")
+                        , rs.getString("Situation")
+                        , rs.getString("Audio")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return allPhrasesWhenIncorrect;
+
+    }
+
 }

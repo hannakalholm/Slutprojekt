@@ -152,17 +152,17 @@ img.currentphoneme {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: rgb(136, 205, 250);
     overflow-x: hidden;
     padding-top: 300px;
     transition: 0.5s;
     font-family: 'Amatic SC', cursive;
     font-size: 35px;
-    color: ghostwhite;
+    color: black;
 }
 
 .sidenav .closebtn {
-    color: ghostwhite;
+    color: black;
     position: absolute;
     top: 0;
     right: 25px;

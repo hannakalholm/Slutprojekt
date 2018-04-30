@@ -1,8 +1,9 @@
 package com.example.logomania.Controller;
 
+import com.example.logomania.Entity.Phrase;
 import com.example.logomania.Entity.Word;
 import com.example.logomania.Repository.DataRepository;
-import com.example.logomania.Repository.WordRepository;
+import com.example.logomania.Repository.WordPhraseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,23 @@ public class GameController {
 
         }
         return fiveRandomWords;
+    }
+
+    @GetMapping("/getcorrectphrases")
+    @ResponseBody
+    public List<Phrase> getPhrasesWhenCorrect(){
+
+        List<Phrase> allCorrectPhrases = dataRepository.generatePhrasesWhenCorrect();
+
+        return allCorrectPhrases;
+    }
+    @GetMapping("/getincorrectphrases")
+    @ResponseBody
+    public List<Phrase> getPhrasesWhenIncorrect(){
+
+        List<Phrase> allIncorrectPhrases = dataRepository.generatePhrasesWhenIncorrect();
+
+        return allIncorrectPhrases;
     }
 
 }
