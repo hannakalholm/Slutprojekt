@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Delius" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 
     <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
     <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
@@ -43,15 +43,17 @@
 
 <div id="header" class="visible">TRÄNA LJUD MED TITTI TÅG!</div>
 
+
 <div class="instruction">
+    <div class="soundtrackspeaker">
+        <div><img id="mutesound" src="Images/Playing.png"></div>
+        <div><img class="nonedisplay" id="unmutesound" src="Images/Muted.png"></div>
+    </div>
+    <div class="instructioncenter">
     <div id="choosephoneme">Klicka på det språkljud du vill öva på</div>
     <div class="nonedisplay" id="placewordintrain">Dra bilden till rätt plats i tåget</div>
     <div class="nonedisplay" id="goodbye">Tack för idag, hoppas vi ses snart igen!</div>
-</div>
-
-<div class="soundtrackspeaker">
-<div><img id="mutesound" src="Images/Speaker.png"></div>
-<div><img class="nonedisplay" id="unmutesound" src="Images/Muted.png"></div>
+    </div>
 </div>
 
 <div class="gameside nonedisplay">
@@ -75,8 +77,8 @@
     <div><input type="image" src="Images/G.png" class="buttonpic button" id="G"></input></div>
 </div>
 
-<div><input type="image" src="Images/Kaffe.png" class="choicebutton nonedisplay" id="playmore"></input></div>
-<div><input type="image" src="Images/Bulle.png" class="choicebutton nonedisplay" id="donefortoday"></input></div>
+<div><input type="image" src="Images/Mer.png" class="choicebutton nonedisplay" id="playmore"></input></div>
+<div><input type="image" src="Images/Nöjd.png" class="choicebutton nonedisplay" id="donefortoday"></input></div>
 
 
 <div class="train">
