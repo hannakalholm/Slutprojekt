@@ -27,6 +27,9 @@ $(".button").on("click", function (e) {
     $(".frontsideupper").addClass("nonedisplay");
     $(".frontsidelower").addClass("nonedisplay");
 
+    $("#choosephoneme").addClass("nonedisplay");
+    $("#placewordintrain").removeClass("nonedisplay");
+
     $("input.buttonpic").addClass("nonedisplay");
     $("#header").removeClass("visible");
     $("#header").addClass("hidden");
@@ -187,6 +190,8 @@ function update(listOfFiveRandomWords) {
         $(".choicebutton").removeClass("nonedisplay");
         $(".gamesidephoneme").addClass("nonedisplay");
         $(".gameside").addClass("nonedisplay");
+        $("#placewordintrain").addClass("nonedisplay");
+
 
     }
 }
@@ -200,6 +205,8 @@ $("#playmore").click(function () {
 
 
     $(".choicebutton").addClass("nonedisplay");
+    $("#choosephoneme").removeClass("nonedisplay");
+
 
     $("#header").removeClass("hidden");
     $("#header").addClass("visible");
@@ -207,7 +214,7 @@ $("#playmore").click(function () {
     soundtrack.loop = true;
     //put fade-in on soundtrack
 });
-
+//When ending the game
 $("#donefortoday").click(function () {
 
 
@@ -218,6 +225,8 @@ $("#donefortoday").click(function () {
     $("input.buttonpic").addClass("hidden");
     $(".frontsideupper").addClass("hidden");
     $(".frontsidelower").addClass("hidden");
+    $("#goodbye").removeClass("nonedisplay");
+
     var goodbyeaudio = new Audio();
     goodbyeaudio.src = "Audio/Tackföridaghoppasvisessnartigen.wav";
     goodbyeaudio.play();
