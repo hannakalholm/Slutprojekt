@@ -48,8 +48,9 @@ img.currentimage {
     height: 200px;
 }
 img.currentphoneme {
-    width: 150px;
-    height: 150px;
+    width: 7%;
+    height: 7%;
+    margin-top: 5%;
 }
 
 .draggable {
@@ -74,6 +75,8 @@ img.currentphoneme {
     justify-content: center;
     align-items: flex-end;
     margin-bottom: 1.5%;
+    margin-left: 4%;
+    margin-top: -1%;
 }
 
 .Initial {
@@ -136,12 +139,13 @@ img.currentphoneme {
 .gameside {
     flex-direction: column;
     justify-content: center;
+    margin-top: 3%;
 }
 
 .gamesidephoneme {
     flex-direction: column;
     justify-content: left;
-    max-height: 100px;
+    max-height: 0;
     margin-left: 50px;
 }
 
@@ -181,7 +185,7 @@ img.currentphoneme {
     font-family: 'Amatic SC', cursive;
     font-size: 35px;
     text-decoration-color: rgb(58, 81, 96);
-    margin-top: 2.5%;
+    margin-top: 3%;
     display: flex;
     justify-content: flex-start;
     position: relative;
@@ -231,7 +235,7 @@ img.currentphoneme {
 
 #playphoneme {
     padding-top: 20px;
-    padding-left: 55px;
+    padding-left: 2%;
 }
 /*#playsound {
     padding-top: 20px;
