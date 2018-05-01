@@ -12,8 +12,7 @@ var listOfFiveRandomWords = [];
 var listOfCorrectAnswer = [];
 var listOfIncorrectAnswer = [];
 var listOfGameFeedback = [];
-//var randomPhraseWhenCorrect = Math.floor((Math.random()*3)+1);
-var randomPhraseWhenIncorrect = Math.floor((Math.random()*(listOfIncorrectAnswer.length-1))+1);
+var randomPhraseWhenIncorrect = Math.floor((Math.random() * (listOfIncorrectAnswer.length - 1)) + 1);
 soundtrack.src = "Audio/Soundtrack.wav";
 soundtrack.play();
 soundtrack.loop = true;
@@ -22,9 +21,7 @@ $(".button").on("click", function (e) {
     var phoneme = $(this).attr('id');
     console.log(phoneme);
     console.log("Button clicked");
- /*   $("img.currentimage").removeClass("hidden");
-    $("img.speaker").removeClass("hidden");
-    $("img.currentphoneme").removeClass("hidden");*/
+
     $(".gamesidephoneme").removeClass("nonedisplay");
     $(".gameside").removeClass("nonedisplay");
     $(".frontsideupper").addClass("nonedisplay");
@@ -63,23 +60,16 @@ $(".button").on("click", function (e) {
 });
 
 
-/*$(function () {
-    $(".draggable").draggable({
-        revert: true,
-
-    });
-});*/
-
 $(function () {
     $(".draggable").draggable({
-        revert: function(droppable){
-            if (!droppable){
-                var randomPhraseWhenIncorrect = Math.floor((Math.random()*listOfIncorrectAnswer.length));
+        revert: function (droppable) {
+            if (!droppable) {
+                var randomPhraseWhenIncorrect = Math.floor((Math.random() * listOfIncorrectAnswer.length));
                 phraseaudio.src = "Audio/" + listOfIncorrectAnswer[randomPhraseWhenIncorrect].audio;
                 phraseaudio.play();
             }
             else {
-                var randomPhraseWhenCorrect = Math.floor((Math.random()*listOfCorrectAnswer.length));
+                var randomPhraseWhenCorrect = Math.floor((Math.random() * listOfCorrectAnswer.length));
                 phraseaudio.src = "Audio/" + listOfCorrectAnswer[randomPhraseWhenCorrect].audio;
                 phraseaudio.play();
             }
@@ -156,10 +146,11 @@ $.ajax({
 });
 
 function render(listOfFiveRandomWords) {
-    $(document).ready(function(){
+    $(document).ready(function () {
         setTimeout(function () {
-            $("img.currentimage").removeClass("hidden");}, 2000);
-        });
+            $("img.currentimage").removeClass("hidden");
+        }, 2000);
+    });
     var index = listOfFiveRandomWords.index;
 
     $("img.currentimage").attr("src", "Images/" + listOfFiveRandomWords[index].image);
@@ -170,7 +161,8 @@ function render(listOfFiveRandomWords) {
 
     $("img#playsound").attr("onclick", "wordaudio.play()");
     setTimeout(function () {
-        $("img#playsound").click();}, 2000);
+        $("img#playsound").click();
+    }, 2000);
 
     $("img#playphoneme").attr("onclick", "phonemeaudio.play()");
 
@@ -190,26 +182,55 @@ function update(listOfFiveRandomWords) {
         render(listOfFiveRandomWords);
 
     } else {
-        alert("Game is over, play aglain.");
-        $("input.buttonpic").removeClass("nonedisplay");
-        $(".frontsideupper").removeClass("nonedisplay");
-        $(".frontsidelower").removeClass("nonedisplay");
+
+
+        $(".choicebutton").removeClass("nonedisplay");
         $(".gamesidephoneme").addClass("nonedisplay");
         $(".gameside").addClass("nonedisplay");
-/*        $("img.speaker").addClass("hidden");
-        $("img.currentphoneme").addClass("hidden");*/
-        $("#header").removeClass("hidden");
-        $("#header").addClass("visible");
-        soundtrack.play();
-        soundtrack.loop = true;
-        //put fade-in on soundtrack
+
     }
 }
+
+$("#playmore").click(function () {
+
+    // alert("Game is over, play aglain.");
+    $("input.buttonpic").removeClass("nonedisplay");
+    $(".frontsideupper").removeClass("nonedisplay");
+    $(".frontsidelower").removeClass("nonedisplay");
+
+
+    $(".choicebutton").addClass("nonedisplay");
+
+    $("#header").removeClass("hidden");
+    $("#header").addClass("visible");
+    soundtrack.play();
+    soundtrack.loop = true;
+    //put fade-in on soundtrack
+});
+
+$("#donefortoday").click(function () {
+
+
+    $(".choicebutton").addClass("nonedisplay");
+    $("input.buttonpic").removeClass("nonedisplay");
+    $(".frontsideupper").removeClass("nonedisplay");
+    $(".frontsidelower").removeClass("nonedisplay");
+    $("input.buttonpic").addClass("hidden");
+    $(".frontsideupper").addClass("hidden");
+    $(".frontsidelower").addClass("hidden");
+    var goodbyeaudio = new Audio();
+    goodbyeaudio.src = "Audio/Tackföridaghoppasvisessnartigen.wav";
+    goodbyeaudio.play();
+
+});
+
+
 //Open the sidenav
 function openNav() {
     document.getElementById("mySidenav").style.width = "100%";
     setTimeout(function () {
-        $("#header").addClass("visible");}, 200);
+        $("#header").addClass("visible");
+    }, 200);
 
 }
 

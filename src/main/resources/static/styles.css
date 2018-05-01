@@ -99,6 +99,13 @@ img.currentphoneme {
     height: 100px;
 }
 
+.choicebutton {
+    display: flex;
+    justify-content: center;
+    display: inline-block;
+    height: 100px;
+}
+
 .frontsideupper {
     display: flex;
     flex-direction: row;
