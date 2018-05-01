@@ -5,6 +5,7 @@
         background-color: rgb(104, 135, 68);
         background-repeat: repeat-x;
         animation: animatedbackground 2000s linear infinite;
+        overflow-y: hidden;
     }
     @keyframes animatedbackground {
         from {
@@ -20,6 +21,7 @@
         background: url("Images/bkg.png") no-repeat center center fixed;
         background-color: rgb(104, 135, 68);
         background-size: cover;
+        overflow-y: hidden;
     }
 }
 h2 {
