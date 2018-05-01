@@ -30,6 +30,8 @@ $(".button").on("click", function (e) {
     $("#choosephoneme").addClass("nonedisplay");
     $("#placewordintrain").removeClass("nonedisplay");
 
+    $(".soundtrackspeaker").addClass("nonedisplay");
+
     $("input.buttonpic").addClass("nonedisplay");
     $("#header").removeClass("visible");
     $("#header").addClass("hidden");
@@ -210,6 +212,9 @@ $("#playmore").click(function () {
 
     $("#header").removeClass("hidden");
     $("#header").addClass("visible");
+
+    $(".soundtrackspeaker").removeClass("nonedisplay");
+
     soundtrack.play();
     soundtrack.loop = true;
     //put fade-in on soundtrack
@@ -248,3 +253,15 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     $("#header").removeClass("visible");
 }
+
+$("#mutesound").on("click",function (e) {
+    soundtrack.pause();
+    $("#unmutesound").removeClass("nonedisplay");
+    $("#mutesound").addClass("nonedisplay");
+})
+
+$("#unmutesound").on("click",function (e) {
+    soundtrack.play();
+    $("#unmutesound").addClass("nonedisplay");
+    $("#mutesound").removeClass("nonedisplay");
+})

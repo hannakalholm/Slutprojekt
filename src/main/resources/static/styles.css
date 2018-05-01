@@ -154,10 +154,10 @@ img.currentphoneme {
     left: 0;
     background-color: rgb(136, 205, 250);
     overflow-x: hidden;
-    padding-top: 300px;
+    padding-top: 15%;
     transition: 0.5s;
     font-family: 'Amatic SC', cursive;
-    font-size: 35px;
+    font-size: 200%;
     color: black;
 }
 
@@ -165,9 +165,8 @@ img.currentphoneme {
     color: black;
     position: absolute;
     top: 0;
-    right: 25px;
-    font-size: 60px;
-    margin-left: 50px;
+    right: 2%;
+    font-size: 200%;
 }
 
 .instruction {
@@ -196,6 +195,7 @@ img.currentphoneme {
     margin-top: 1.25%;
     right: 0;
     text-decoration-color: rgb(58, 81, 96);
+    pointer-events: none;
 }
 
 #playphoneme {
@@ -212,4 +212,16 @@ img.currentphoneme {
     margin-top: 2%;
 }
 
+#mutesound {
+    width: 40px;
+    height: 40px;
+    margin:0;
+    padding:0;
+}
+#unmutesound {
+    width: 40px;
+    height: 40px;
+    margin:0;
+    padding:0;
+}
 
