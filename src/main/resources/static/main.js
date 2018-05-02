@@ -118,7 +118,7 @@ function renderGamesideImage(index) {
     $(document).ready(function () {
         setTimeout(function () {
             $("img.currentimage").removeClass("hidden");
-        }, 1500);
+        }, 1000);
     });
     $("img.currentimage").attr("src", "Images/" + listOfFiveRandomWords[index].image);
     $("img.currentphoneme").attr("src", "Images/" + listOfFiveRandomWords[index].phoneme + ".png");
@@ -204,16 +204,16 @@ $("#donefortoday").click(function () {
 
     displayPhonemeButtons();
 
-    $("#home1").addClass("nonedisplay");
-    $("#home2").removeClass("nonedisplay");
+    $("#homegameside").addClass("nonedisplay");
+    $("#homeend").removeClass("nonedisplay");
 
 
     $(".choicebutton").addClass("nonedisplay");
 
     $("input.buttonpic").addClass("hidden");
-    $(".frontsideupper").addClass("hidden");
-    $(".frontsidelower").addClass("hidden");
-    $("#goodbye").removeClass("nonedisplay");
+    $(".frontsideupper").addClass("nonedisplay");
+    $(".frontsidelower").addClass("nonedisplay");
+    $(".endpage").removeClass("nonedisplay");
 
     var goodbyeaudio = new Audio();
     goodbyeaudio.src = "Audio/Tackföridaghoppasvisessnartigen.wav";
@@ -223,7 +223,7 @@ $("#donefortoday").click(function () {
 });
 
 //to get home (calls the same function as playmore-button + parts from else-condition in update)
-$("#home1").click(function () {
+$("#homegameside").click(function () {
 
     $("#playmore").click();
 
@@ -237,17 +237,17 @@ $("#home1").click(function () {
 });
 
 //to get home even if you have clicked that you are done for today
-$("#home2").click(function () {
+$("#homeend").click(function () {
 
     $("#playmore").click();
 
-    $("#goodbye").addClass("nonedisplay");
+    $(".endpage").addClass("nonedisplay");
     $("input.buttonpic").removeClass("hidden");
-    $(".frontsideupper").removeClass("hidden");
-    $(".frontsidelower").removeClass("hidden");
+    $(".frontsideupper").removeClass("nonedisplay");
+    $(".frontsidelower").removeClass("nonesdisplay");
 
-    $("#home2").addClass("nonedisplay");
-    $("#home1").removeClass("nonedisplay");
+    $("#homeend").addClass("nonedisplay");
+    $("#homegameside").removeClass("nonedisplay");
 });
 
 //Open the sidenav

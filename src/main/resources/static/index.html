@@ -17,30 +17,29 @@
     <script src="jquery.ui.touch-punch.min.js"></script>
 
 
-
 </head>
 <body>
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-<div id="rules"><h2>Spelregler</h2></div>
+    <div id="rules"><h2>Spelregler</h2></div>
 
     <p>1. Välj ett språkljud. </p>
     <p>2. När en bild visar sig ska barnet lyssna på ordet och försöka dra bilden till rätt del i tåget,
-    utifrån vart i ordet som det valda språkljudet finns. </p>
+        utifrån vart i ordet som det valda språkljudet finns. </p>
     <p>3. Ord som börjar på språkljudet hör hemma i loket,
-    ord som har språkljudet någonstans i mitten av ordet ska läggas i mittersta vagnen och ord som har
+        ord som har språkljudet någonstans i mitten av ordet ska läggas i mittersta vagnen och ord som har
         språkljudet allra sist ska placeras i den sista vagnen.</p>
     <p>4. Uppmuntra barnet att lyssna på ordet flera gånger
-    och tänka efter innan hen försöker. För att påminna barnet om vilket ljud hen ska lyssna efter finns alltid
-    en bild på språkljudet på sidan där man kan få höra ljudet så många gånger det behövs. </p>
+        och tänka efter innan hen försöker. För att påminna barnet om vilket ljud hen ska lyssna efter finns alltid
+        en bild på språkljudet på sidan där man kan få höra ljudet så många gånger det behövs. </p>
 
 </div>
 
 <!-- Use any element to open the sidenav -->
 <!--<span onclick="openNav()">Information</span>-->
-<input id="hamburger" type="image" src="Images/Hamburgermeny.png" onclick="openNav()" >
-<input id="home1" type="image" src="Images/Hus.png">
-<input id="home2" class="nonedisplay" type="image" src="Images/Hus.png">
+<input id="hamburger" type="image" src="Images/Hamburgermeny.png" onclick="openNav()">
+<input id="homegameside" type="image" src="Images/Hus.png">
+<input id="homeend" class="nonedisplay" type="image" src="Images/Hus.png">
 
 
 <div id="header" class="visible">TRÄNA LJUD MED TITTI TÅG!</div>
@@ -52,11 +51,15 @@
         <div><img class="nonedisplay" id="unmutesound" src="Images/Muted.png"></div>
     </div>
     <div class="instructioncenter">
-    <div id="choosephoneme">Klicka på det språkljud du vill öva på</div>
-    <div class="nonedisplay" id="placewordintrain">Dra bilden till rätt plats i tåget</div>
-    <div class="nonedisplay" id="goodbye">Tack för idag, hoppas vi ses snart igen!</div>
+        <div id="choosephoneme">Klicka på det språkljud du vill öva på</div>
+        <div class="nonedisplay" id="placewordintrain">Dra bilden till rätt plats i tåget</div>
     </div>
 </div>
+
+
+<div class="goodbye endpage nonedisplay">Tack för idag, hoppas vi ses snart igen!</div>
+<div class="thanks endpage nonedisplay">Titti tåg är skapat av Hanna Kalholm, Jakob Nyström och Maria Sjölin.<br>
+    Ett stort tack till Matilda Kalholm och Olle Lundberg för musik och ljud.</div>
 
 <div class="gameside nonedisplay">
     <span class="gamesidephoneme nonedisplay">

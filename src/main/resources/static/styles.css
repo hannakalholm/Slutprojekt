@@ -238,6 +238,22 @@ img.currentphoneme {
     justify-content: flex-start;
 }
 
+.goodbye{
+    font-family: 'Amatic SC', cursive;
+    font-size: 60px;
+    color: black;
+    margin-top: 2.5%;
+    margin-bottom: 5%;
+}
+
+.thanks {
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+    color: black;
+    margin-bottom: 3.75%
+
+}
+
 #header {
     display: flex;
     align-content: space-between;
@@ -270,12 +286,12 @@ img.currentphoneme {
     margin-top: 2%;
 }
 
-#home1 {
+#homegameside {
     width: 3.5%;
     margin-top: 2%;
 }
 
-#home2 {
+#homeend {
     width: 3.5%;
     margin-top: 2%;
 }
