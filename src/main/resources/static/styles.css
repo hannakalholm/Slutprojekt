@@ -37,8 +37,8 @@
         color: black;
     }
     p {
-        margin-left: 40px;
-        margin-right: 70px;
+        margin-left: 20px;
+        margin-right: 50px;
         font-family: 'Open Sans Condensed', sans-serif;
         font-size: 25px;
         color: black;
@@ -54,8 +54,8 @@
         color: black;
     }
     p {
-        margin-left: 40px;
-        margin-right: 70px;
+        margin-left: 20px;
+        margin-right: 50px;
         font-family: 'Open Sans Condensed', sans-serif;
         font-size: 20px;
         color: black;
@@ -208,6 +208,7 @@ img.currentphoneme {
     top: 0;
     right: 2%;
     font-size: 200%;
+    text-decoration: none;
 }
 
 .instruction {
@@ -243,15 +244,20 @@ img.currentphoneme {
     font-size: 60px;
     color: black;
     margin-top: 2.5%;
-    margin-bottom: 5%;
+}
+
+.changedmymind {
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
+    color: black;
+    margin-bottom: 4.5%
 }
 
 .thanks {
     font-family: 'Amatic SC', cursive;
     font-size: 30px;
     color: black;
-    margin-bottom: 3.75%
-
+    margin-bottom: 2.14%
 }
 
 #header {
