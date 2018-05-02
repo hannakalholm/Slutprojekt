@@ -16,26 +16,11 @@ var randomPhraseWhenIncorrect = Math.floor((Math.random() * (listOfIncorrectAnsw
 
 initializeGame();
 
+//when phoneme button is clicked, ajax calls to java to collect wordlist from database.
 $(".button").on("click", function (e) {
     var phoneme = $(this).attr('id');
-    console.log(phoneme);
-    console.log("Button clicked");
 
-    $(".gamesidephoneme").removeClass("nonedisplay");
-    $(".gameside").removeClass("nonedisplay");
-    $(".frontsideupper").addClass("nonedisplay");
-    $(".frontsidelower").addClass("nonedisplay");
-
-    $("#choosephoneme").addClass("nonedisplay");
-    $("#placewordintrain").removeClass("nonedisplay");
-
-    $(".soundtrackspeaker").addClass("nonedisplay");
-
-    $("input.buttonpic").addClass("nonedisplay");
-    $("#header").removeClass("visible");
-    $("#header").addClass("hidden");
-    soundtrack.pause();
-    //put fade-out on soundtrack
+    enterGameside();
 
     $.ajax({
         type: "POST",
@@ -48,8 +33,6 @@ $(".button").on("click", function (e) {
 
         url: "/test", //which is mapped to its partner function on our controller class
         success: function (data) {
-            console.log(data);
-            console.log();
 
             listOfFiveRandomWords = [];
             listOfFiveRandomWords.index = 0;
@@ -65,16 +48,7 @@ $(".button").on("click", function (e) {
 $(function () {
     $(".draggable").draggable({
         revert: function (droppable) {
-            if (!droppable) {
-                var randomPhraseWhenIncorrect = Math.floor((Math.random() * listOfIncorrectAnswer.length));
-                phraseaudio.src = "Audio/" + listOfIncorrectAnswer[randomPhraseWhenIncorrect].audio;
-                phraseaudio.play();
-            }
-            else {
-                var randomPhraseWhenCorrect = Math.floor((Math.random() * listOfCorrectAnswer.length));
-                phraseaudio.src = "Audio/" + listOfCorrectAnswer[randomPhraseWhenCorrect].audio;
-                phraseaudio.play();
-            }
+            getFeedbackPhrase(droppable);
             return true;
         }
     });
@@ -85,8 +59,7 @@ $(function () {
         accept: ".Initial",
         drop: function (event, ui) {
             $(this)
-            $("img.currentimage").addClass("hidden");
-            update(listOfFiveRandomWords);
+            removeDroppedImage();
         }
     });
 });
@@ -96,8 +69,7 @@ $(function () {
         accept: ".Medial",
         drop: function (event, ui) {
             $(this)
-            $("img.currentimage").addClass("hidden");
-            update(listOfFiveRandomWords);
+            removeDroppedImage();
         }
     });
 });
@@ -107,52 +79,32 @@ $(function () {
         accept: ".Final",
         drop: function (event, ui) {
             $(this)
-            $("img.currentimage").addClass("hidden");
-            update(listOfFiveRandomWords);
+            removeDroppedImage();
         }
     });
-});
-
-//ajax-anrop för att få phrases när man svarat rätt
-$.ajax({
-    type: "GET",
-    error: function () {
-        console.log("error retrieving the data");
-    },
-
-    url: "/getcorrectphrases", //which is mapped to its partner function on our controller class
-    success: function (data) {
-        console.log(data);
-        console.log();
-
-        for (var x = 0; x < data.length; x++) {
-            listOfCorrectAnswer.push(data[x]);
-        }
-    }
-});
-
-//ajax-anrop för att få phrases när man svarat fel
-$.ajax({
-    type: "GET",
-    error: function () {
-        console.log("error retrieving the data");
-    },
-
-    url: "/getincorrectphrases", //which is mapped to its partner function on our controller class
-    success: function (data) {
-        console.log(data);
-        console.log();
-
-        for (var x = 0; x < data.length; x++) {
-            listOfIncorrectAnswer.push(data[x]);
-        }
-    }
 });
 
 function initializeGame() {
     soundtrack.src = "Audio/Soundtrack.wav";
     soundtrack.play();
     soundtrack.loop = true;
+}
+
+function enterGameside() {
+    $(".gamesidephoneme").removeClass("nonedisplay");
+    $(".gameside").removeClass("nonedisplay");
+    $(".frontsideupper").addClass("nonedisplay");
+    $(".frontsidelower").addClass("nonedisplay");
+
+    $("#choosephoneme").addClass("nonedisplay");
+    $("#placewordintrain").removeClass("nonedisplay");
+
+    $(".soundtrackspeaker").addClass("nonedisplay");
+
+    $("input.buttonpic").addClass("nonedisplay");
+    $("#header").removeClass("visible");
+    $("#header").addClass("hidden");
+    soundtrack.pause();
 }
 
 function render(listOfFiveRandomWords) {
@@ -190,6 +142,24 @@ function resetPositionClass(index) {
     $("img.currentimage").addClass(listOfFiveRandomWords[index].position);
 }
 
+function getFeedbackPhrase(droppable){
+    if (!droppable) {
+        var randomPhraseWhenIncorrect = Math.floor((Math.random() * listOfIncorrectAnswer.length));
+        phraseaudio.src = "Audio/" + listOfIncorrectAnswer[randomPhraseWhenIncorrect].audio;
+        phraseaudio.play();
+    }
+    else {
+        var randomPhraseWhenCorrect = Math.floor((Math.random() * listOfCorrectAnswer.length));
+        phraseaudio.src = "Audio/" + listOfCorrectAnswer[randomPhraseWhenCorrect].audio;
+        phraseaudio.play();
+    }
+}
+
+function removeDroppedImage() {
+    $("img.currentimage").addClass("hidden");
+    update(listOfFiveRandomWords);
+}
+
 function update(listOfFiveRandomWords) {
     listOfFiveRandomWords.index++;
 
@@ -205,17 +175,18 @@ function update(listOfFiveRandomWords) {
     }
 }
 
-$("#playmore").click(function () {
-
-    // alert("Game is over, play aglain.");
+function displayPhonemeButtons(){
     $("input.buttonpic").removeClass("nonedisplay");
     $(".frontsideupper").removeClass("nonedisplay");
     $(".frontsidelower").removeClass("nonedisplay");
+}
 
+$("#playmore").click(function () {
+
+    displayPhonemeButtons();
 
     $(".choicebutton").addClass("nonedisplay");
     $("#choosephoneme").removeClass("nonedisplay");
-
 
     $("#header").removeClass("hidden");
     $("#header").addClass("visible");
@@ -226,14 +197,14 @@ $("#playmore").click(function () {
     soundtrack.loop = true;
 
 });
+
 //When ending the game
 $("#donefortoday").click(function () {
 
+    displayPhonemeButtons();
 
     $(".choicebutton").addClass("nonedisplay");
-    $("input.buttonpic").removeClass("nonedisplay");
-    $(".frontsideupper").removeClass("nonedisplay");
-    $(".frontsidelower").removeClass("nonedisplay");
+
     $("input.buttonpic").addClass("hidden");
     $(".frontsideupper").addClass("hidden");
     $(".frontsidelower").addClass("hidden");
@@ -252,6 +223,7 @@ $("#home").click(function () {
     $("#placewordintrain").addClass("nonedisplay");
 
     $("#playmore").click();
+    $("img.currentimage").addClass("hidden");
     
 });
 
@@ -281,3 +253,39 @@ $("#unmutesound").on("click",function (e) {
     $("#unmutesound").addClass("nonedisplay");
     $("#mutesound").removeClass("nonedisplay");
 })
+
+//ajax-anrop för att få phrases när man svarat rätt
+$.ajax({
+    type: "GET",
+    error: function () {
+        console.log("error retrieving the data");
+    },
+
+    url: "/getcorrectphrases", //which is mapped to its partner function on our controller class
+    success: function (data) {
+        console.log(data);
+        console.log();
+
+        for (var x = 0; x < data.length; x++) {
+            listOfCorrectAnswer.push(data[x]);
+        }
+    }
+});
+
+//ajax-anrop för att få phrases när man svarat fel
+$.ajax({
+    type: "GET",
+    error: function () {
+        console.log("error retrieving the data");
+    },
+
+    url: "/getincorrectphrases", //which is mapped to its partner function on our controller class
+    success: function (data) {
+        console.log(data);
+        console.log();
+
+        for (var x = 0; x < data.length; x++) {
+            listOfIncorrectAnswer.push(data[x]);
+        }
+    }
+});
