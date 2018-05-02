@@ -12,7 +12,6 @@ var listOfFiveRandomWords = [];
 var listOfCorrectAnswer = [];
 var listOfIncorrectAnswer = [];
 var listOfGameFeedback = [];
-var randomPhraseWhenIncorrect = Math.floor((Math.random() * (listOfIncorrectAnswer.length - 1)) + 1);
 
 initializeGame();
 
@@ -193,8 +192,10 @@ $("#playmore").click(function () {
 
     $(".soundtrackspeaker").removeClass("nonedisplay");
 
-    soundtrack.play();
-    soundtrack.loop = true;
+    if(!($("#mutesound").hasClass("nonedisplay"))){
+        soundtrack.play();
+        soundtrack.loop=true;
+    }
 
 });
 
@@ -202,6 +203,10 @@ $("#playmore").click(function () {
 $("#donefortoday").click(function () {
 
     displayPhonemeButtons();
+
+    $("#home1").addClass("nonedisplay");
+    $("#home2").removeClass("nonedisplay");
+
 
     $(".choicebutton").addClass("nonedisplay");
 
@@ -214,17 +219,35 @@ $("#donefortoday").click(function () {
     goodbyeaudio.src = "Audio/Tackföridaghoppasvisessnartigen.wav";
     goodbyeaudio.play();
 
+
 });
 
 //to get home (calls the same function as playmore-button + parts from else-condition in update)
-$("#home").click(function () {
+$("#home1").click(function () {
+
+    $("#playmore").click();
+
     $(".gamesidephoneme").addClass("nonedisplay");
     $(".gameside").addClass("nonedisplay");
     $("#placewordintrain").addClass("nonedisplay");
 
-    $("#playmore").click();
     $("img.currentimage").addClass("hidden");
-    
+
+
+});
+
+//to get home even if you have clicked that you are done for today
+$("#home2").click(function () {
+
+    $("#playmore").click();
+
+    $("#goodbye").addClass("nonedisplay");
+    $("input.buttonpic").removeClass("hidden");
+    $(".frontsideupper").removeClass("hidden");
+    $(".frontsidelower").removeClass("hidden");
+
+    $("#home2").addClass("nonedisplay");
+    $("#home1").removeClass("nonedisplay");
 });
 
 //Open the sidenav
@@ -250,6 +273,7 @@ $("#mutesound").on("click",function (e) {
 
 $("#unmutesound").on("click",function (e) {
     soundtrack.play();
+    soundtrack.loop = true;
     $("#unmutesound").addClass("nonedisplay");
     $("#mutesound").removeClass("nonedisplay");
 })

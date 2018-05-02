@@ -1,4 +1,4 @@
-@media only screen and (min-width: 1400px){
+@media only screen and (min-width: 1400px) {
     body {
         background: url("Images/bkg.png") no-repeat center center fixed;
         background-size: 99%;
@@ -7,6 +7,7 @@
         animation: animatedbackground 2000s linear infinite;
         overflow-y: hidden;
     }
+
     @keyframes animatedbackground {
         from {
             background-position: 0 0;
@@ -16,6 +17,7 @@
         }
     }
 }
+
 @media only screen and (max-width: 1399px) {
     body {
         background: url("Images/bkg.png") no-repeat center center fixed;
@@ -24,20 +26,40 @@
         overflow-y: hidden;
     }
 }
-h2 {
-    margin-left: 30px;
-    margin-right: 30px;
-    font-family: 'Amatic SC', cursive;
-    font-size: 55px;
-    color: black;
+
+
+@media only screen and (min-width: 1400px) {
+    h2 {
+        margin-left: 30px;
+        margin-right: 30px;
+        font-family: 'Amatic SC', cursive;
+        font-size: 55px;
+        color: black;
+    }
+    p {
+        margin-left: 40px;
+        margin-right: 70px;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 25px;
+        color: black;
+    }
 }
 
-p {
-    margin-left: 40px;
-    margin-right: 70px;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 25px;
-    color: black;
+@media only screen and (max-width: 1399px) {
+    h2 {
+        margin-left: 30px;
+        margin-right: 30px;
+        font-family: 'Amatic SC', cursive;
+        font-size: 35px;
+        color: black;
+    }
+    p {
+        margin-left: 40px;
+        margin-right: 70px;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 20px;
+        color: black;
+    }
 }
 
 div {
@@ -49,6 +71,7 @@ img.currentimage {
     width: 200px;
     height: 200px;
 }
+
 img.currentphoneme {
     width: 7%;
     height: 7%;
@@ -71,14 +94,14 @@ img.currentphoneme {
 }
 
 .train {
-   display: flex;
+    display: flex;
     flex-direction: row;
     height: 100%;
     justify-content: center;
     align-items: flex-end;
     margin-bottom: 1.5%;
     margin-left: 4%;
-    margin-top: -1%;
+    margin-top: 0%;
 }
 
 .Initial {
@@ -88,6 +111,7 @@ img.currentphoneme {
     float: left;
     margin: 10px;
 }
+
 .Medial {
     display: flex;
     width: 390px;
@@ -97,6 +121,7 @@ img.currentphoneme {
     float: left;
     margin-top: 10px;
 }
+
 .Final {
     display: flex;
     width: 390px;
@@ -117,6 +142,8 @@ img.currentphoneme {
     justify-content: center;
     display: inline-block;
     height: 100px;
+    margin-top: 3.5%;
+    margin-bottom: 0.50%;
 }
 
 .frontsideupper {
@@ -126,12 +153,12 @@ img.currentphoneme {
     margin-top: 1.5%;
 }
 
-.frontsidelower{
+.frontsidelower {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 2%;
-    margin-bottom: 1%;
+    margin-bottom: 1.85%;
 }
 
 .nonedisplay {
@@ -206,8 +233,6 @@ img.currentphoneme {
     transform: translateX(-50%);
 }
 
-
-
 .instruction:first-child {
     display: flex;
     justify-content: flex-start;
@@ -239,17 +264,18 @@ img.currentphoneme {
     padding-top: 20px;
     padding-left: 2%;
 }
-/*#playsound {
-    padding-top: 20px;
-    padding-left: 55px;
-}*/
 
 #hamburger {
     width: 3.5%;
     margin-top: 2%;
 }
 
-#home {
+#home1 {
+    width: 3.5%;
+    margin-top: 2%;
+}
+
+#home2 {
     width: 3.5%;
     margin-top: 2%;
 }
@@ -257,13 +283,14 @@ img.currentphoneme {
 #mutesound {
     width: 40px;
     height: 40px;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
+
 #unmutesound {
     width: 40px;
     height: 40px;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 
