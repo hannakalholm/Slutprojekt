@@ -29,6 +29,7 @@ public class GameController {
             System.out.println(allWord);
 
         }
+        System.out.println();
         return fiveRandomWords;
     }
 

@@ -43,5 +43,18 @@ public class Word {
     public String getPosition() {
         return position;
     }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "id=" + id +
+                ", position='" + position + '\'' +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", audio='" + audio + '\'' +
+                ", phoneme='" + phoneme + '\'' +
+                '}';
+    }
+
 }
 

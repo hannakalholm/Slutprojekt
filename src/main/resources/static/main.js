@@ -50,20 +50,18 @@ $(".button").on("click", function (e) {
         url: "/test", //which is mapped to its partner function on our controller class
         success: function (data) {
             console.log(data);
+            console.log();
 
-            if (listOfFiveRandomWords.length != 0) {
-                listOfFiveRandomWords = [];
-                listOfFiveRandomWords.index = 0;
-            }
+            listOfFiveRandomWords = [];
+            listOfFiveRandomWords.index = 0;
+
             for (var x = 0; x < data.length; x++) {
                 listOfFiveRandomWords.push(data[x]);
-                listOfFiveRandomWords.index = 0;
             }
             render(listOfFiveRandomWords);
         }
     });
 });
-
 
 $(function () {
     $(".draggable").draggable({
@@ -126,6 +124,7 @@ $.ajax({
     url: "/getcorrectphrases", //which is mapped to its partner function on our controller class
     success: function (data) {
         console.log(data);
+        console.log();
 
         for (var x = 0; x < data.length; x++) {
             listOfCorrectAnswer.push(data[x]);
@@ -143,6 +142,7 @@ $.ajax({
     url: "/getincorrectphrases", //which is mapped to its partner function on our controller class
     success: function (data) {
         console.log(data);
+        console.log();
 
         for (var x = 0; x < data.length; x++) {
             listOfIncorrectAnswer.push(data[x]);
@@ -156,7 +156,7 @@ function render(listOfFiveRandomWords) {
             $("img.currentimage").removeClass("hidden");
         }, 2000);
     });
-    var index = listOfFiveRandomWords.index;
+    const index = listOfFiveRandomWords.index;
 
     $("img.currentimage").attr("src", "Images/" + listOfFiveRandomWords[index].image);
     $("img.currentphoneme").attr("src", "Images/" + listOfFiveRandomWords[index].phoneme + ".png");
@@ -170,14 +170,11 @@ function render(listOfFiveRandomWords) {
     }, 2000);
 
     $("img#playphoneme").attr("onclick", "phonemeaudio.play()");
+    $("img.currentimage").removeClass("Initial");
+    $("img.currentimage").removeClass("Medial");
+    $("img.currentimage").removeClass("Final");
+    $("img.currentimage").addClass(listOfFiveRandomWords[index].position);
 
-    if (listOfFiveRandomWords.index === 0) {
-        $("img.currentimage").addClass(listOfFiveRandomWords[index].position);
-    } else {
-        $("img.currentimage").removeClass(listOfFiveRandomWords[index - 1].position);
-        $("img.currentimage").addClass(listOfFiveRandomWords[index].position);
-    }
-    console.log(listOfFiveRandomWords);
 }
 
 function update(listOfFiveRandomWords) {
@@ -188,12 +185,10 @@ function update(listOfFiveRandomWords) {
 
     } else {
 
-
         $(".choicebutton").removeClass("nonedisplay");
         $(".gamesidephoneme").addClass("nonedisplay");
         $(".gameside").addClass("nonedisplay");
         $("#placewordintrain").addClass("nonedisplay");
-
 
     }
 }
@@ -217,7 +212,7 @@ $("#playmore").click(function () {
 
     soundtrack.play();
     soundtrack.loop = true;
-    //put fade-in on soundtrack
+
 });
 //When ending the game
 $("#donefortoday").click(function () {
@@ -238,6 +233,19 @@ $("#donefortoday").click(function () {
 
 });
 
+//to get home (calls the same function as playmore-button + parts from else-condition in update)
+$("#home").click(function () {
+    $(".gamesidephoneme").addClass("nonedisplay");
+    $(".gameside").addClass("nonedisplay");
+    $("#placewordintrain").addClass("nonedisplay");
+
+    $("#playmore").click();
+
+    if (listOfFiveRandomWords.length != 0) {
+        listOfFiveRandomWords = [];
+        listOfFiveRandomWords.index = 0;
+    }
+});
 
 //Open the sidenav
 function openNav() {
