@@ -13,9 +13,8 @@ var listOfCorrectAnswer = [];
 var listOfIncorrectAnswer = [];
 var listOfGameFeedback = [];
 var randomPhraseWhenIncorrect = Math.floor((Math.random() * (listOfIncorrectAnswer.length - 1)) + 1);
-soundtrack.src = "Audio/Soundtrack.wav";
-soundtrack.play();
-soundtrack.loop = true;
+
+initializeGame();
 
 $(".button").on("click", function (e) {
     var phoneme = $(this).attr('id');
@@ -150,31 +149,45 @@ $.ajax({
     }
 });
 
+function initializeGame() {
+    soundtrack.src = "Audio/Soundtrack.wav";
+    soundtrack.play();
+    soundtrack.loop = true;
+}
+
 function render(listOfFiveRandomWords) {
+
+    const index = listOfFiveRandomWords.index;
+    renderGamesideImage(index);
+    renderGamesideAudio(index);
+    resetPositionClass(index);
+}
+
+function renderGamesideImage(index) {
     $(document).ready(function () {
         setTimeout(function () {
             $("img.currentimage").removeClass("hidden");
-        }, 2000);
+        }, 1500);
     });
-    const index = listOfFiveRandomWords.index;
-
     $("img.currentimage").attr("src", "Images/" + listOfFiveRandomWords[index].image);
     $("img.currentphoneme").attr("src", "Images/" + listOfFiveRandomWords[index].phoneme + ".png");
+}
 
+function renderGamesideAudio(index) {
     wordaudio.src = "/Audio/" + listOfFiveRandomWords[index].audio;
     phonemeaudio.src = "Audio/" + listOfFiveRandomWords[index].phoneme + ".wav";
 
     $("img#playsound").attr("onclick", "wordaudio.play()");
     setTimeout(function () {
         $("img#playsound").click();
-    }, 2000);
+    }, 1500);
 
     $("img#playphoneme").attr("onclick", "phonemeaudio.play()");
-    $("img.currentimage").removeClass("Initial");
-    $("img.currentimage").removeClass("Medial");
-    $("img.currentimage").removeClass("Final");
-    $("img.currentimage").addClass(listOfFiveRandomWords[index].position);
+}
 
+function resetPositionClass(index) {
+    $("img.currentimage").removeClass("Initial Medial Final");
+    $("img.currentimage").addClass(listOfFiveRandomWords[index].position);
 }
 
 function update(listOfFiveRandomWords) {
@@ -189,7 +202,6 @@ function update(listOfFiveRandomWords) {
         $(".gamesidephoneme").addClass("nonedisplay");
         $(".gameside").addClass("nonedisplay");
         $("#placewordintrain").addClass("nonedisplay");
-
     }
 }
 
@@ -240,11 +252,7 @@ $("#home").click(function () {
     $("#placewordintrain").addClass("nonedisplay");
 
     $("#playmore").click();
-
-    if (listOfFiveRandomWords.length != 0) {
-        listOfFiveRandomWords = [];
-        listOfFiveRandomWords.index = 0;
-    }
+    
 });
 
 //Open the sidenav
