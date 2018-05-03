@@ -31,7 +31,7 @@ public class WordPhraseRepository implements DataRepository {
         List<Word> allWordsForOnePhoneme = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM dbo.Words WHERE Phoneme = '" + phoneme + "';")) {
+             ResultSet rs = stmt.executeQuery("SELECT * FROM Words WHERE Phoneme = '" + phoneme + "';")) {
             while (rs.next()) {
                 allWordsForOnePhoneme.add(new Word(rs.getInt("ID")
                         , rs.getString("Name")
@@ -59,7 +59,7 @@ public class WordPhraseRepository implements DataRepository {
         List<Phrase> allPhrasesWhenCorrect = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM dbo.Phrases WHERE Situation = 'Correct';")) {
+             ResultSet rs = stmt.executeQuery("SELECT * FROM Phrases WHERE Situation = 'Correct';")) {
             while (rs.next()) {
                 allPhrasesWhenCorrect.add(new Phrase(rs.getInt("ID")
                         , rs.getString("Situation")
@@ -76,7 +76,7 @@ public class WordPhraseRepository implements DataRepository {
         List<Phrase> allPhrasesWhenIncorrect = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM dbo.Phrases WHERE Situation = 'Incorrect';")) {
+             ResultSet rs = stmt.executeQuery("SELECT * FROM Phrases WHERE Situation = 'Incorrect';")) {
             while (rs.next()) {
                 allPhrasesWhenIncorrect.add(new Phrase(rs.getInt("ID")
                         , rs.getString("Situation")
