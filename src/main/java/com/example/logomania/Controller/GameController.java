@@ -25,11 +25,7 @@ public class GameController {
 
         List<Word> allWordsForOnePhoneme = dataRepository.getAllWordsForOnePhoneme(phoneme);
         List<Word> fiveRandomWords = dataRepository.generateRandomFiveWords(allWordsForOnePhoneme);
-        for (Word allWord : fiveRandomWords ) {
-            System.out.println(allWord);
-
-        }
-        System.out.println();
+        
         return fiveRandomWords;
     }
 

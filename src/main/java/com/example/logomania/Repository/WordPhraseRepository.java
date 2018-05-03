@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -29,10 +26,14 @@ public class WordPhraseRepository implements DataRepository {
     public List<Word> getAllWordsForOnePhoneme(String phoneme) {
 
         List<Word> allWordsForOnePhoneme = new ArrayList<>();
+        String statement = "SELECT * FROM Words WHERE Phoneme = ?";
         try (Connection conn = dataSource.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM Words WHERE Phoneme = '" + phoneme + "';")) {
+             PreparedStatement sth = conn.prepareStatement(statement);) {
+
+            sth.setString(1, phoneme);
+            ResultSet rs = sth.executeQuery();
             while (rs.next()) {
+
                 allWordsForOnePhoneme.add(new Word(rs.getInt("ID")
                         , rs.getString("Name")
                         , rs.getString("Image")
@@ -40,11 +41,13 @@ public class WordPhraseRepository implements DataRepository {
                         , rs.getString("Phoneme")
                         , rs.getString("Position")));
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
         return allWordsForOnePhoneme;
     }
+
 
     public List<Word> generateRandomFiveWords(List<Word> allWordsForOnePhoneme) {
         List<Word> randomFiveWords = new ArrayList<>();
@@ -57,9 +60,12 @@ public class WordPhraseRepository implements DataRepository {
 
     public List<Phrase> generatePhrasesWhenCorrect(){
         List<Phrase> allPhrasesWhenCorrect = new ArrayList<>();
+        String statement = "SELECT * FROM Phrases WHERE Situation = ?";
         try (Connection conn = dataSource.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM Phrases WHERE Situation = 'Correct';")) {
+             PreparedStatement sth = conn.prepareStatement(statement);) {
+
+            sth.setString(1, "Correct");
+            ResultSet rs = sth.executeQuery();
             while (rs.next()) {
                 allPhrasesWhenCorrect.add(new Phrase(rs.getInt("ID")
                         , rs.getString("Situation")
@@ -74,9 +80,12 @@ public class WordPhraseRepository implements DataRepository {
 
     public List<Phrase> generatePhrasesWhenIncorrect(){
         List<Phrase> allPhrasesWhenIncorrect = new ArrayList<>();
+        String statement = "SELECT * FROM Phrases WHERE Situation = ?";
         try (Connection conn = dataSource.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM Phrases WHERE Situation = 'Incorrect';")) {
+             PreparedStatement sth = conn.prepareStatement(statement);) {
+
+            sth.setString(1, "Incorrect");
+            ResultSet rs = sth.executeQuery();
             while (rs.next()) {
                 allPhrasesWhenIncorrect.add(new Phrase(rs.getInt("ID")
                         , rs.getString("Situation")
