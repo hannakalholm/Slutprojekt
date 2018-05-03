@@ -120,6 +120,7 @@ function renderGamesideImage(index) {
             $("img.currentimage").removeClass("hidden");
         }, 1000);
     });
+    $("img.currentphoneme").removeClass("hidden");
     $("img.currentimage").attr("src", "Images/" + listOfFiveRandomWords[index].image);
     $("img.currentphoneme").attr("src", "Images/" + listOfFiveRandomWords[index].phoneme + ".png");
 }
@@ -192,6 +193,9 @@ $("#playmore").click(function () {
 
     $(".soundtrackspeaker").removeClass("nonedisplay");
 
+    $("img.currentimage").addClass("hidden");
+    $("img.currentphoneme").addClass("hidden");
+
     if(!($("#mutesound").hasClass("nonedisplay"))){
         soundtrack.play();
         soundtrack.loop=true;
@@ -230,9 +234,6 @@ $("#homegameside").click(function () {
     $(".gamesidephoneme").addClass("nonedisplay");
     $(".gameside").addClass("nonedisplay");
     $("#placewordintrain").addClass("nonedisplay");
-
-    $("img.currentimage").addClass("hidden");
-
 
 });
 
