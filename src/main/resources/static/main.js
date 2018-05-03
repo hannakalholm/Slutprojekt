@@ -103,6 +103,7 @@ function enterGameside() {
     $("input.buttonpic").addClass("nonedisplay");
     $("#header").removeClass("visible");
     $("#header").addClass("hidden");
+    $("#homegameside").removeClass("nonedisplay");
     soundtrack.pause();
 }
 
@@ -184,6 +185,7 @@ function displayPhonemeButtons(){
 $("#playmore").click(function () {
 
     displayPhonemeButtons();
+    $("#homegameside").addClass("nonedisplay");
 
     $(".choicebutton").addClass("nonedisplay");
     $("#choosephoneme").removeClass("nonedisplay");
@@ -248,7 +250,6 @@ $("#homeend").click(function () {
     $(".frontsidelower").removeClass("nonesdisplay");
 
     $("#homeend").addClass("nonedisplay");
-    $("#homegameside").removeClass("nonedisplay");
 });
 
 //Open the sidenav
