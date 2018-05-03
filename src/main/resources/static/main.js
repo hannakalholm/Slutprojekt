@@ -13,13 +13,7 @@ var listOfCorrectAnswer = [];
 var listOfIncorrectAnswer = [];
 var listOfGameFeedback = [];
 
-/*
 initializeGame();
-*/
-
-soundtrack.src = "Audio/Soundtrack.wav";
-soundtrack.play();
-soundtrack.loop = true;
 
 //when phoneme button is clicked, ajax calls to java to collect wordlist from database.
 $(".button").on("click", function (e) {
@@ -89,11 +83,11 @@ $(function () {
     });
 });
 
-/*function initializeGame() {
+function initializeGame() {
     soundtrack.src = "Audio/Soundtrack.wav";
     soundtrack.play();
     soundtrack.loop = true;
-}*/
+}
 
 function enterGameside() {
     $(".gamesidephoneme").removeClass("nonedisplay");
