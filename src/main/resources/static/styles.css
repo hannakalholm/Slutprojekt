@@ -214,7 +214,7 @@ img.currentphoneme {
     font-family: 'Amatic SC', cursive;
     font-size: 35px;
     text-decoration-color: rgb(58, 81, 96);
-    margin-top: 3%;
+    padding-top: 3%;
     display: flex;
     justify-content: flex-start;
     position: relative;
