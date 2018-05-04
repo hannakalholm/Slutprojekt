@@ -280,7 +280,7 @@ $("#unmutesound").on("click",function (e) {
     $("#mutesound").removeClass("nonedisplay");
 })
 
-//ajax-anrop för att få phrases när man svarat rätt
+//ajax-anrop to get phrases when answer is correct
 $.ajax({
     type: "GET",
     error: function () {
@@ -298,7 +298,7 @@ $.ajax({
     }
 });
 
-//ajax-anrop för att få phrases när man svarat fel
+//ajax-anrop to get phrases when answer is incorrect
 $.ajax({
     type: "GET",
     error: function () {
@@ -315,3 +315,4 @@ $.ajax({
         }
     }
 });
+
