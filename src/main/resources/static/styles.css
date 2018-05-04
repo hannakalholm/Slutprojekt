@@ -141,7 +141,7 @@ img.currentphoneme {
     justify-content: center;
     display: inline-block;
     height: 100px;
-    margin-top: 3.5%;
+    padding-top: 3.5%;
     margin-bottom: 0.50%;
 }
 
@@ -242,21 +242,21 @@ img.currentphoneme {
     font-family: 'Amatic SC', cursive;
     font-size: 60px;
     color: black;
-    margin-top: 2.5%;
+    padding-top: 2.5%;
 }
 
 .changedmymind {
     font-family: 'Amatic SC', cursive;
     font-size: 25px;
     color: black;
-    margin-bottom: 4.5%
+    padding-bottom: 4.5%
 }
 
 .thanks {
     font-family: 'Amatic SC', cursive;
     font-size: 30px;
     color: black;
-    margin-bottom: 2.14%
+    padding-bottom: 2.14%
 }
 
 #header {
